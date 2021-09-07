@@ -1,9 +1,9 @@
 package pl.sda.profile;
 
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-@Primary
+@Profile("!dev")
 @Component
 public class MainProfileProvider implements ProfileProvider{
 

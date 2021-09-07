@@ -12,9 +12,9 @@ public class ComponentWithProperty {
     private String propertyValue;
 
 
-    //musi istnieć setter
+    //musi istnieć setter i o statusie public
     private  String fieldA;
-    //musi istnieć setter
+    //musi istnieć setter i o statusie public
     private  Integer fieldB;
 
 
