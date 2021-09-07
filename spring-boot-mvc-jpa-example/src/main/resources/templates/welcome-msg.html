@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello msg</title>
+</head>
+<body>
+
+<!-- jeśli korzystamy z klasy kontrolera to używamy symbolu $ -->
+<p th:text="${helloMsg}"></p>
+
+<div>
+    <p th:each="element : ${elements}" th:text="${element}"></p>
+</div>
+
+<!-- Poniższa zmienna pochodzi z pliku meeages.properties - właściwość pl.sda.message -->
+<!-- jeśli chcemy odwołać sie do zmiennej properties to używamy symbolu # -->
+<p th:text="#{pl.sda.message}"></p>
+
+</body>
+</html>
