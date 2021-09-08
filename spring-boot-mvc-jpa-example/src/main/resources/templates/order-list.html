@@ -22,8 +22,8 @@
                 <th scope="col">Quantity</th>
             </tr>
         </thead>
-        <tbody style="color:green">
-            <tr th:each="order : ${orders}">
+        <tbody>
+            <tr class="table-info" th:each="order : ${orders}">
                 <td th:text="${order.id}"/>
                 <td th:text="${order.productName}"/>
                 <td th:text="${order.quantity}"/>
