@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order list</title>
+</head>
+<body>
+
+    <h4>
+        <a th:href="@{/orders/create}">Go to create order</a>
+    </h4>
+
+    <table class="table">
+        <thead style="color:blue">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Product name</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody style="color:green">
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}"/>
+                <td th:text="${order.productName}"/>
+                <td th:text="${order.quantity}"/>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

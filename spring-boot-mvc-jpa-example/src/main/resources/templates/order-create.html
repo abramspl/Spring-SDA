@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -10,12 +14,14 @@
         <label>
             Nazwa produktu:
             <input type="text" th:field="*{productName}">
+            <td th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"/>
         </label>
         <label>
             Ilość:
             <input type="number" th:field="*{quantity}">
+            <td th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"/>
         </label>
-        <button type="submit">Złóż zamówienie</button>
+        <button type="submit" class="btn btn-success">Złóż zamówienie</button>
     </form>
 
 </body>

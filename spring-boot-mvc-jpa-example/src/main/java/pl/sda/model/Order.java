@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor // konstruktor wieloparametrowy
@@ -18,7 +20,11 @@ public class Order {
     //adnotacje encji nad polami
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;         // id produktu
-    private String productName; // nazwa produktu
-    private Integer quantity;     // ilość produktu
+    private Integer id;                                             // id produktu
+
+    @Size(min = 2, max = 5, message = "Size must be min 2 max 5")   // nazwa produktu musi się składać od 2 do 5 znaków
+    private String productName;                                     // nazwa produktu
+
+    @Min(value = 1, message = "Ilość nie może być mniejsza od 1")
+    private Integer quantity;                                       // ilość produktu
 }
