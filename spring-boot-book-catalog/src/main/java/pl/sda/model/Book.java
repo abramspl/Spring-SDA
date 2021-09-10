@@ -22,6 +22,7 @@ public class Book {
 
     private String isbn;
 
+    @Column(length = 1000)
     private String description;
 
     private Integer year;

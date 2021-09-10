@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book details</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Description</th>
+        <th>Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <td th:text="${book.id}"/>
+    <td th:text="${book.title}"/>
+    <td th:text="${book.author}"/>
+    <td th:text="${book.isbn}"/>
+    <td th:text="${book.description}"/>
+    <td th:text="${book.year}"/>
+    </tbody>
+</table>
+
+<a th:href="@{/books}">Return to book list</a>
+
+</body>
+
+</body>
+</html>
