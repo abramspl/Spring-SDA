@@ -1,5 +1,6 @@
 package pl.sda.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +18,9 @@ public class BookController {
 
     @GetMapping("/books")
     public ModelAndView bookList() {
-        ModelAndView modelAndView = new ModelAndView("book-list"); //nazwa widoku /html
-        modelAndView.addObject("books", bookService.getAll());
+        ModelAndView modelAndView = new ModelAndView("book-list"); //nazwa widoku .html
+        modelAndView.addObject("books", bookService.getAllDto());
+        modelAndView.addObject("username", getLoggedUsername());
         return modelAndView;
     }
 
@@ -29,5 +31,8 @@ public class BookController {
         return modelAndView;
     }
 
+    private String getLoggedUsername() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
 
 }

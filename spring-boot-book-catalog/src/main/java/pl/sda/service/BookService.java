@@ -19,4 +19,6 @@ public interface BookService {
 
     List<BookDto> getAllDto();
 
+    List<Book> getAllPaginated(Integer pageNumber, Integer bookQuantity);
+
 }

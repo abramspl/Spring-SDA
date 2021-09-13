@@ -1,5 +1,7 @@
 package pl.sda.service.impl;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.sda.dto.BookDto;
 import pl.sda.mapper.BookMapper;
@@ -46,9 +48,15 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> getAllDto() {
-        return getAll()
+        return getAllPaginated(0,2)
                 .stream()
                 .map(b -> BookMapper.map(b))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Book> getAllPaginated(Integer pageNumber, Integer bookQuantity) {
+        final PageRequest pageRequest = PageRequest.of(pageNumber, bookQuantity, Sort.by("title"));
+        return bookRepository.findAll(pageRequest).getContent();
     }
 }

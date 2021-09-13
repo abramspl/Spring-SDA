@@ -3,31 +3,38 @@
 <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Book list</title>
 </head>
 <body>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-            </tr>
-        </thead>
+<p><a th:href="@{/logout}">Logout</a></p>
 
-        <tbody>
-            <tr th:each="book:${books}">
-                <td th:text="${book.title}"/>
-                <td th:text="${book.author}"/>
+Logged user: <p th:text="${username}"/>
 
-                <td><a th:href="@{/books/{bookId}/(bookId=${book.id})}"/>details</td>
-            </tr>
-        </tbody>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+    </thead>
 
-    </table>
+    <tbody>
+    <tr th:each="book:${books}">
+        <td th:text="${book.title}"/>
+        <td th:text="${book.author}"/>
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <td><a th:href="@{/books/{bookId}/(bookId=${book.id})}"/>details</td>
+        </div>
+    </tr>
+    </tbody>
+
+</table>
 
 </body>
 </html>
